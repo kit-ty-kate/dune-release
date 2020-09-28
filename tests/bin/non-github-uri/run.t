@@ -13,7 +13,7 @@ We need a basic opam project skeleton
     > opam-version: "2.0"\
     > homepage: "https://whatever.io"\
     > dev-repo: "git+https://whatever.io/dev/whatever.git"\
-    > description: "whatever"\
+    > synopsis: "whatever"\
     > EOF
     $ touch README
     $ touch LICENSE
@@ -68,7 +68,7 @@ We do the whole dune-release process
     [ OK ] File opam is present.
     -: exec: opam lint -s whatever.opam
     [ OK ] lint opam file whatever.opam.
-    [ OK ] opam field description is present
+    [ OK ] opam field synopsis is present
     [ OK ] opam fields homepage and dev-repo can be parsed by dune-release
     [ OK ] Skipping doc field linting, no doc field found
     [ OK ] lint _build/whatever-0.1.0 success

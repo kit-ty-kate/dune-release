@@ -14,13 +14,13 @@ We need a basic opam project skeleton
     > opam-version: "2.0"\
     > homepage: "https://github.com/foo/whatever"\
     > dev-repo: "git+https://github.com/foo/whatever.git"\
-    > description: "whatever"\
+    > synopsis: "whatever"\
     > EOF
     $ cat > whatever-lib.opam << EOF \
     > opam-version: "2.0"\
     > homepage: "https://github.com/foo/whatever"\
     > dev-repo: "git+https://github.com/foo/whatever.git"\
-    > description: "whatever-lib"\
+    > synopsis: "whatever-lib"\
     > doc: ""\
     > EOF
     $ touch README
@@ -75,7 +75,7 @@ We make a dry-run release
     [ OK ] File opam is present.
     -: exec: opam lint -s whatever.opam
     [ OK ] lint opam file whatever.opam.
-    [ OK ] opam field description is present
+    [ OK ] opam field synopsis is present
     [ OK ] opam fields homepage and dev-repo can be parsed by dune-release
     [ OK ] Skipping doc field linting, no doc field found
     [ OK ] lint _build/whatever-0.1.0 success
@@ -90,7 +90,7 @@ We make a dry-run release
     [ OK ] File opam is present.
     -: exec: opam lint -s whatever-lib.opam
     [ OK ] lint opam file whatever-lib.opam.
-    [ OK ] opam field description is present
+    [ OK ] opam field synopsis is present
     [ OK ] opam fields homepage and dev-repo can be parsed by dune-release
     [ OK ] Skipping doc field linting, no doc field found
     [ OK ] lint _build/whatever-0.1.0 success
@@ -156,7 +156,7 @@ We do the whole process, calling publish doc implicitely should succeed
     [ OK ] File opam is present.
     -: exec: opam lint -s whatever.opam
     [ OK ] lint opam file whatever.opam.
-    [ OK ] opam field description is present
+    [ OK ] opam field synopsis is present
     [ OK ] opam fields homepage and dev-repo can be parsed by dune-release
     [ OK ] Skipping doc field linting, no doc field found
     [ OK ] lint _build/whatever-0.1.0 success
@@ -171,7 +171,7 @@ We do the whole process, calling publish doc implicitely should succeed
     [ OK ] File opam is present.
     -: exec: opam lint -s whatever-lib.opam
     [ OK ] lint opam file whatever-lib.opam.
-    [ OK ] opam field description is present
+    [ OK ] opam field synopsis is present
     [ OK ] opam fields homepage and dev-repo can be parsed by dune-release
     [ OK ] Skipping doc field linting, no doc field found
     [ OK ] lint _build/whatever-0.1.0 success
