@@ -11,6 +11,7 @@
 
 - Attach the changelog to the annotated tag message (#283, @gpetiot)
 - Deprecate the use of delegates in `dune-release publish` (#276, @pitag-ha)
+- Opam file linter: check for `synopsis` instead of `description` (#291, @kit-ty-kate)
 
 ### Deprecated
 
