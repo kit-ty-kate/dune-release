@@ -107,6 +107,10 @@ val tag :
 val delete_tag : dry_run:bool -> t -> string -> (unit, R.msg) result
 (** [delete_tag r t] deletes tag [t] in repo [r]. *)
 
+val submodule_update : dry_run:bool -> t -> (unit, R.msg) result
+(** [submodule r] pulls in all submodules in [r]. Only works for git
+    repositories *)
+
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Daniel C. Bünzli
 

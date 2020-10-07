@@ -6,6 +6,9 @@
 - Log curl calls on verbose/debug mode (#281, @gpetiot)
 - Try to publish the release asset again after it failed (#272, @gpetiot)
 - Improve error reporting of failing git comands (#257, @gpetiot)
+- Allow including git submodules to the distrib tarball by passing the
+  `--include-submodules` flag to `dune-release`, `dune-release bistro` or
+  `dune-release distrib` (#300, @NathanReb)
 
 ### Changed
 
@@ -14,6 +17,8 @@
 - Do not remove versioned files from the tarball anymore. We used to exclude
   `.gitignore`, `.gitattributes` and other such files from the archive.
   (#299, @NathanReb)
+- Recursively exclude all `.git`/`.hg` files and folders from the distrib
+  tarball (#300, @NathanReb)
 
 ### Deprecated
 
