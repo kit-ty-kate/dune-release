@@ -6,12 +6,20 @@
 - Log curl calls on verbose/debug mode (#281, @gpetiot)
 - Try to publish the release asset again after it failed (#272, @gpetiot)
 - Improve error reporting of failing git comands (#257, @gpetiot)
+- Allow including git submodules to the distrib tarball by passing the
+  `--include-submodules` flag to `dune-release`, `dune-release bistro` or
+  `dune-release distrib` (#300, @NathanReb)
 
 ### Changed
 
 - Attach the changelog to the annotated tag message (#283, @gpetiot)
 - Deprecate the use of delegates in `dune-release publish` (#276, @pitag-ha)
 - Opam file linter: check for `synopsis` instead of `description` (#291, @kit-ty-kate)
+- Do not remove versioned files from the tarball anymore. We used to exclude
+  `.gitignore`, `.gitattributes` and other such files from the archive.
+  (#299, @NathanReb)
+- Recursively exclude all `.git`/`.hg` files and folders from the distrib
+  tarball (#300, @NathanReb)
 
 ### Deprecated
 
@@ -32,6 +40,8 @@
   (#266, @NathanReb)
 - Improve trimming of the changelog to preserve the indentation of the list of changes. (#268, @gpetiot)
 - Trim the data of the `url` file before filling the `url.src` field. This fixes an issue that caused the `url.src` field to be a multi-line string instead of single line. (#270, @gpetiot)
+- Fix a bug causing dune-release to exclude all hidden files and folders (starting with `.`) at the
+  repository from the distrib archive (#298, @NathanReb)
 
 ### Security
 

@@ -146,6 +146,9 @@ let git_tag ~dry_run r ~force ~sign ~msg ~commit_ish tag =
 let git_delete_tag ~dry_run r tag =
   run_git_quiet ~dry_run r Cmd.(v "tag" % "-d" % tag)
 
+let git_submodule_update ~dry_run r =
+  run_git_quiet ~dry_run r Cmd.(v "submodule" % "update" % "--init")
+
 (* Hg support *)
 
 let hg_rev commit_ish = match commit_ish with "HEAD" -> "tip" | c -> c
@@ -314,6 +317,11 @@ let delete_tag ~dry_run r tag =
   match r with
   | (`Git, _, _) as r -> git_delete_tag ~dry_run r tag
   | (`Hg, _, _) as r -> hg_delete_tag r tag
+
+let submodule_update ~dry_run r =
+  match r with
+  | (`Git, _, _) as r -> git_submodule_update ~dry_run r
+  | `Hg, _, _ -> R.error_msgf "submodule update is not supported with mercurial"
 
 (*---------------------------------------------------------------------------
    Copyright (c) 2016 Daniel C. Bünzli

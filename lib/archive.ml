@@ -118,14 +118,13 @@ module Tar = struct
 end
 
 let path_set_of_dir dir ~exclude_paths =
-  let add_prefix p acc = Fpath.(Set.add (dir // p) acc) in
-  let exclude_paths = Fpath.Set.(fold add_prefix exclude_paths empty) in
-  let not_excluded p = Ok (not (Fpath.Set.mem p exclude_paths)) in
+  let not_excluded p = Ok (not (Fpath.Set.mem (Fpath.base p) exclude_paths)) in
   let traverse = `Sat not_excluded in
   let elements = `Sat not_excluded in
   let err _ e = e in
-  OS.Dir.fold_contents ~dotfiles:true ~err ~elements ~traverse Fpath.Set.add
-    Fpath.Set.empty dir
+  OS.Dir.contents ~dotfiles:true dir
+  >>= OS.Path.fold ~dotfiles:true ~err ~elements ~traverse Fpath.Set.add
+        Fpath.Set.empty
 
 let tar dir ~exclude_paths ~root ~mtime =
   let tar_add file tar =
